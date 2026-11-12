@@ -1,0 +1,51 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3Access",
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:ListBucket",
+        "s3:ListAllMyBuckets",
+        "s3:PutObject",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::parcial2-bucket-floci",
+        "arn:aws:s3:::parcial2-bucket-floci/*"
+      ]
+    },
+    {
+      "Sid": "EKSAccess",
+      "Effect": "Allow",
+      "Action": [
+        "eks:CreateCluster",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "arn:aws:eks:us-east-1:000000000000:cluster/parcial2-cluster",
+        "arn:aws:iam::000000000000:role/eks-role"
+      ]
+    },
+    {
+      "Sid": "ECRAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:CreateRepository",
+        "ecr:DescribeRepositories",
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:InitiateLayerUpload",
+        "ecr:UploadLayerPart",
+        "ecr:CompleteLayerUpload",
+        "ecr:PutImage",
+        "ecr:BatchGetImage",
+        "ecr:GetDownloadUrlForLayer"
+      ],
+      "Resource": "arn:aws:ecr:us-east-1:000000000000:repository/api-parcial2"
+    }
+  ]
+}
